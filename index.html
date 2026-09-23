@@ -1362,6 +1362,13 @@ async function showProducts() {
 }
 
 showProducts();
+</script> <script>
+supabaseClient
+  .from("products")
+  .select("*")
+  .then(({ data, error }) => {
+    alert(error ? "ERROR: " + error.message : "PRODUCTS: " + JSON.stringify(data));
+  });
 </script>
 
 </body>
