@@ -1335,7 +1335,34 @@
       }
 
       loadProducts();
-    </script>
+    </script> <div id="products"></div>
+
+<script>
+async function showProducts() {
+  const { data, error } = await supabaseClient
+    .from("products")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  const container = document.getElementById("products");
+
+  container.innerHTML = data.map(product => `
+    <div style="border:1px solid #ddd;padding:15px;margin:10px;border-radius:10px;">
+      ${product.image_url ? `<img src="${product.image_url}" style="width:100%;max-width:250px;border-radius:8px;">` : ""}
+      <h3>${product.name}</h3>
+      <p>${product.description || ""}</p>
+      <strong>₹${product.price}</strong>
+    </div>
+  `).join("");
+}
+
+showProducts();
+</script>
 
 </body>
 
