@@ -1279,6 +1279,66 @@
   renderCartCount();
   renderCartDrawer();
 })();
-</script>
+</script>     <!-- your existing website code -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+      const SUPABASE_URL = "https://vztufrfbxasdokqrnanp.supabase.co";
+      const SUPABASE_KEY = "PASTE_YOUR_PUBLISHABLE_KEY_HERE";
+
+      const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+      async function loadProducts() {
+        const { data, error } = await supabaseClient
+          .from("products")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        if (error) {
+          console.error("Supabase error:", error);
+          return;
+        }
+
+        console.log("Products from Supabase:", data);
+      }
+
+      loadProducts();
+    </script>     <!-- your existing website code -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+      const SUPABASE_URL = "https://vztufrfbxasdokqrnanp.supabase.co";
+      const SUPABASE_KEY = "https://vztufrfbxasdokqrnanp.supabase.co/";
+
+      const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+      async function loadProducts() {
+        const { data, error } = await supabaseClient
+          .from("products")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        if (error) {
+          console.error("Supabase error:", error);
+          return;
+        }
+
+        console.log("Products from Supabase:", data);
+      }
+
+      loadProducts();
+    </script>
+
+</body>
+
+</body>
 </body>
 </html>
